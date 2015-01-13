@@ -103,7 +103,9 @@ false 错误
 
 ###JS SDK###
 
-首先导入所需的js文件（ICECSS本身包含，不需要额外导入）。
+首先导入所需的js文件（ICECSS本身包含，不需要额外导入）。JS的SDK依赖Jquery，所以还需要Jquery哦。
+
+`<script src="js/jquery.js"></script>`
 
 `<script src="js/ice_cloud.js"></script>`
 
