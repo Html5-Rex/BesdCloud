@@ -210,9 +210,6 @@ num=5，根据value1、value2、value3、value4来查找该用户的数据
  `ice_cloud.delPublic(id);` 
 
 
-####注意事项####
-
-有可能上面定义的方法执行后会有一两秒的延迟才能获取到result，这时我们建议您对获取result的方法进行延时1-3秒。
 
 
 ####JS SDK使用示例####
