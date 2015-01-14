@@ -15,10 +15,10 @@ function ice_cloud() {
 	this.value3 = "null";
 	this.value4 = "null";
 	this.id = 0;
-	
+
 	//初始化用于存储结果的变量
-	this.result="null";
-	
+	this.result = "null";
+
 
 	//请将开发者ID填写在这
 	this.devid = "null";
@@ -86,6 +86,17 @@ function ice_cloud() {
 		return ice.cloud_ajax();
 	};
 
+	//调用api修改数据
+	this.storeUp = function(id, v1, v2, v3, v4) {
+		ice.link = ice.url + "api/store/up";
+		ice.id = id;
+		ice.value1 = v1;
+		ice.value2 = v2;
+		ice.value3 = v3;
+		ice.value4 = v4;
+		return ice.cloud_ajax();
+	};
+
 	//开发者授权
 	this.manageLogin = function(u, p) {
 		ice.link = ice.url + "manage/login";
@@ -96,7 +107,7 @@ function ice_cloud() {
 
 	//增加public数据
 	this.addPublic = function(v1, v2, v3, v4) {
-		ice.link = ice.url + "manage/public/addpublic";
+		ice.link = ice.url + "api/store_public/addpublic";
 		ice.value1 = v1;
 		ice.value2 = v2;
 		ice.value3 = v3;
@@ -105,17 +116,28 @@ function ice_cloud() {
 	};
 	//删除public数据
 	this.delPublic = function(i) {
-		ice.link = ice.url + "manage/public/delpublic";
+		ice.link = ice.url + "api/store_public/delpublic";
 		ice.id = i;
+		return ice.cloud_ajax();
+	};
+
+	//修改public数据
+	this.upPublic = function(id, v1, v2, v3, v4) {
+		ice.link = ice.url + "api/store_public/uppublic";
+		ice.id = id;
+		ice.value1 = v1;
+		ice.value2 = v2;
+		ice.value3 = v3;
+		ice.value4 = v4;
 		return ice.cloud_ajax();
 	};
 
 	//获取public数据
 	this.serPublic = function() {
-		ice.link = ice.url + "manage/public/serpublic";
+		ice.link = ice.url + "api/store_public/serpublic";
 		return ice.cloud_ajax();
 	};
-	
+
 	//获取result
 	this.getResult = function() {
 		return ice.result;
@@ -153,7 +175,7 @@ function ice_cloud() {
 			crossDomain: true,
 
 			success: function(data, status, xhr) {
-				ice.result= data["result"];
+				ice.result = data["result"];
 
 			}
 

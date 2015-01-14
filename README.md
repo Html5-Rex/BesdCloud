@@ -55,25 +55,33 @@ BESD云服务目前分为几个部分：开发者系统、用户系统、邮件�
 
 所需参数：id
 
-7.查找数据 http://cloud.besdlab.cn/api/search
+7.修改数据  http://cloud.besdlab.cn/api/store/up
+
+所需参数：id、value1、value2、value3、value4
+
+8.查找数据 http://cloud.besdlab.cn/api/search
 
 所需参数：num、value1、value2、value3、value4
 
-8.开发者授权 http://cloud.besdlab.cn/manage/login
+9.开发者授权 http://cloud.besdlab.cn/manage/login
 
 所需参数：username、password
 
-9.增加public数据 http://cloud.besdlab.cn/manage/public/addpublic
+10.增加public数据 http://cloud.besdlab.cn/api/store_public/addpublic
 
 所需参数：value1、value2、value3、value4
 
-10.删除public数据 http://cloud.besdlab.cn/manage/public/delpublic
+11.删除public数据 http://cloud.besdlab.cn/api/store_public/delpublic
 
 所需参数：id
 
-11.获取public数据 http://cloud.besdlab.cn/manage/public/serpublic
+12.获取public数据 http://cloud.besdlab.cn/api/store_public/serpublic
 
 所需参数：无
+
+13.修改public数据 http://cloud.besdlab.cn/api/store_public/uppublic
+
+所需参数：id、value1、value2、value3、value4
 
 
 ###常见返还###
@@ -177,27 +185,35 @@ num=3，根据value1、value2来查找该用户的数据
 num=4，根据value1、value2、value3来查找该用户的数据
 num=5，根据value1、value2、value3、value4来查找该用户的数据
 
-（8）删除数据
+（8）修改数据
+
+`ice_cloud.storeUp(id,value1,value2,value3,value4);`
+
+根据ID来修改数据
+
+（9）删除数据
 
 `ice_cloud.storeDelete(id);`
 
 根据id删除该用户的数据，您可以先通过查找数据获取到想要删除的数据的id后进行删除。
 
-（9）获取result
+（10）获取result
 
  SDK中默认是执行完后将返回的结果中result的值赋予到变量result上，所以可以通过getResult获取到result的值。
 
  `ice_cloud.getResult();`
 
- （10）public用户
+ （11）public用户
 
  我们在开发云服务的时候想到个问题，如果开发者希望自己下面所有的用户都能看到同样的一些数据怎么办（比如公告）？
 
-所以在开发者注册时会自动生成一个public用户，开发者下面的用户登陆后可以通过api获得public用户的数据但却不能增加和删除。
+所以在开发者注册时会自动生成一个public用户，开发者下面的用户可以通过api获得public用户的数据但却不能增加和删除。
+
+即使在没有任何人登录的情况下也可以获取到指定开发者ID下的public用户数据
 
  `ice_cloud.serPublic();`
 
- （11）public用户数据的增加和删除
+ （12）public用户数据的增加和删除、修改
 
  想要增加或删除public用户的数据必须经过开发者的授权。
 
@@ -208,6 +224,10 @@ num=5，根据value1、value2、value3、value4来查找该用户的数据
  `ice_cloud.addPublic(value1,value2,value3,value4);` 
 
  `ice_cloud.delPublic(id);` 
+
+ 修改则是用
+
+  `ice_cloud.upPublic(id,value1,value2,value3,value4);` 
 
 
 
